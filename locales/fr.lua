@@ -8,6 +8,7 @@ Locales["fr"] = {
 	['no_veh_parking'] 	= 'vous n\'avez aucun véhicule dans ce parking.',
 	['veh_model'] 		= 'modèle',
 	['veh_plate'] 		= 'immatriculation',
+	['veh_condition'] 		= 'etat',
 	['veh_action'] 		= 'action',
 	['veh_exit']		= 'sortir le véhicule',
 	['veh_block']		= 'il semble qu\'un véhicule gêne la sortie.'

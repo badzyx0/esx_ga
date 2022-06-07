@@ -8,6 +8,7 @@ Locales["en"] = {
 	['no_veh_parking'] 	= 'you have no vehicle in this car park.',
 	['veh_model'] 		= 'model',
 	['veh_plate'] 		= 'plate',
+	['veh_condition'] 		= 'condition',
 	['veh_action'] 		= 'action',
 	['veh_exit']		= 'exit the vehicle',
 	['veh_block']		= 'it looks like a vehicle is blocking the exit.'

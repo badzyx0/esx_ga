@@ -33,6 +33,7 @@ RegisterNUICallback('spawnVehicle', function(data, cb)
             ESX.Game.SetVehicleProperties(vehicle, data.vehicleProps)
             SetVehicleEngineOn(vehicle, (not GetIsVehicleEngineRunning(vehicle)), true, true)
         end)
+
         thisGarage = nil
 
         TriggerServerEvent('esx_garage:updateOwnedVehicle', false, nil, data.vehicleProps)
@@ -139,10 +140,15 @@ CreateThread(function()
                                 if next(vehicles) ~= nil then
                                     menuIsShowed        = true
 
+                                    -- vehicles[i].vehicle.bodyHealth
+                                    -- vehicles[i].vehicle.engineHealth
+                                    -- vehicles[i].vehicle.tankHealth
+
                                     for i = 1, #vehicles, 1 do
                                         table.insert(vehiclesList, {
-                                            plate       = vehicles[i].plate,
                                             model       = GetDisplayNameFromVehicleModel(vehicles[i].vehicle.model),
+                                            plate       = vehicles[i].plate,
+                                            damage      = vehicles[i].damage,
                                             props       = vehicles[i].vehicle
                                         })
 
@@ -165,6 +171,7 @@ CreateThread(function()
                                             action          = _U('veh_exit'),
                                             veh_model       = _U('veh_model'),
                                             veh_plate       = _U('veh_plate'),
+                                            veh_condition      = _U('veh_condition'),
                                             veh_action      = _U('veh_action')
                                         }
                                     })
@@ -191,11 +198,12 @@ CreateThread(function()
 
                     if isInVehicle then
                         if IsControlJustReleased(0, 38) then
-                            local vehicleProps = ESX.Game.GetVehicleProperties(GetVehiclePedIsIn(playerPed, false))
-
+                            local vehicle = GetVehiclePedIsIn(playerPed, false)
+                            local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
+                            
                             ESX.TriggerServerCallback('esx_garage:checkVehicleOwner', function(owner)
                                 if owner then
-                                    ESX.Game.DeleteVehicle(GetVehiclePedIsIn(playerPed, false))
+                                    ESX.Game.DeleteVehicle(vehicle)
                                     TriggerServerEvent('esx_garage:updateOwnedVehicle', true, currentGarage, vehicleProps)
                                 else
                                     ESX.ShowNotification(_U('not_owning_veh'), 'error')

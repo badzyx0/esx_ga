@@ -20,6 +20,7 @@ body {
   position: absolute;
   background: #232934;
   border-radius: 10px;
+  border-top: 20px solid #353e4f;
   height: 700px;
   width: 1000px;
   top: 40%;
@@ -27,24 +28,42 @@ body {
   margin: -250px 0 0 -300px;
   cursor: default;
   display: flex;
-  flex-direction: column;
+  flex-direction: unset;
 }
 
 #header {
   color: white;
-  font-size: 30px;
-  border-radius: 10px 10px 0px 0px;
+  font-size: 44px;
+  border-radius: 0px 0px 0px 10px;
   text-align: center;
-  padding: 20px;
+  padding: 50px;
   background: #353e4f;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
+  justify-content: center;
 }
 
 #header .close {
   float: right;
-  color: red;
-  font-size: 15px;
+  color: #b90000;
+  font-size: 20px;
   font-weight: bold;
-  padding: 10px 0;
+  padding: 5px 5px;
+  background: #00000026;
+  border: 1px solid #00000026;
+  border-radius: 3px;
+  cursor: pointer;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  height: 25px;
+  width: 25px;
+}
+
+#header .close:hover {
+  color: #df3d3d;
+  background: #00000041;
 }
 
 .clear-both {
@@ -61,19 +80,17 @@ body {
   width: 50%;
 }
 
-.left-side {
+.content {
   width: 100%;
   margin: 20px;
   color: white;
-  border: solid #353e4f 2px;
-  border-radius: 10px;
-  height: 575px;
+  height: 655px;
   overflow-y: auto;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 }
 
-.left-side::-webkit-scrollbar {
+.content::-webkit-scrollbar {
   display: none;
 }
 
@@ -84,11 +101,10 @@ body {
   outline: none;
 }
 
-.left-side .vehicle-header {
+.content .vehicle-header {
   display: flex;
   justify-content: space-between;
-  padding: 10px 20px;
-  background: #353e4f;
+  padding: 5px 20px;
 }
 
 .group {
@@ -132,11 +148,32 @@ input::-webkit-inner-spin-button {
 }
 
 .vehicle-listing {
-  display: flex;
+  display: inline-block;
   flex-direction: row;
+  border: 1px solid #353e4f;
+  border-left: 5px solid #353e4f;
+  border-radius: 3px;
+  margin: 5px;
+  padding: 20px 35px;
+  font-size: 18px;
+  text-align: center;
+  width: 274px;
+}
+
+.vehicle-listing div {
+  display: flow-root;
   justify-content: space-between;
-  border-bottom: 5px solid rgba(255, 255, 255, 0.5);
-  padding: 10px 20px;
+  align-content: space-between;
+}
+
+.vehicle-listing strong {
+  display: inline-block;
+}
+
+.vehicle-listing:hover {
+  background: #353e4f;
+  border: 1px solid #353e4f;
+  border-left: 5px solid #353e4f;
 }
 
 .unstyled-button {
@@ -154,10 +191,11 @@ input::-webkit-inner-spin-button {
   display: inline-block;
   cursor: pointer;
   color: #ffffff;
-  font-size: 13px;
+  font-size: 17px;
   font-weight: bold;
-  padding: 5px 12px;
-  text-decoration: none;
+  padding: 20px 45px;
+  margin: 15px;
+  text-shadow: -1px 1px 2px #00000026;
 }
 
 .vehicle-action:hover {
