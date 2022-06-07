@@ -171,7 +171,7 @@ CreateThread(function()
                                             action          = _U('veh_exit'),
                                             veh_model       = _U('veh_model'),
                                             veh_plate       = _U('veh_plate'),
-                                            veh_condition      = _U('veh_condition'),
+                                            veh_condition   = _U('veh_condition'),
                                             veh_action      = _U('veh_action')
                                         }
                                     })
