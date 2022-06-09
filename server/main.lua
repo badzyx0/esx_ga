@@ -31,8 +31,8 @@ ESX.RegisterServerCallback('esx_garage:getVehiclesInParking', function(source, c
 		local vehicles = {}
 		for i = 1, #result, 1 do
 			table.insert(vehicles, {
-				vehicle = json.decode(result[i].vehicle),
-				plate = result[i].plate
+				vehicle 	= json.decode(result[i].vehicle),
+				plate 		= result[i].plate
 			})
 		end
 
@@ -45,8 +45,8 @@ ESX.RegisterServerCallback('esx_garage:checkVehicleOwner', function(source, cb, 
 
 	MySQL.query('SELECT COUNT(*) as count FROM owned_vehicles WHERE owner = @identifier AND plate = @plate',
 	{
-		['@identifier'] = xPlayer.identifier,
-		['@plate']     	= plate
+		['@identifier'] 	= xPlayer.identifier,
+		['@plate']     		= plate
 	}, function(result)
 
 		if tonumber(result[1].count) > 0 then

@@ -105,6 +105,7 @@ CreateThread(function()
             if (#(coords -
                 vector3(v.StorePoint.x, v.StorePoint.y, v.StorePoint.z)) < Config.DrawDistance) then
                 DrawMarker(Config.Markers.StorePoint.Type, v.StorePoint.x, v.StorePoint.y, v.StorePoint.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, Config.Markers.StorePoint.Size.x, Config.Markers.StorePoint.Size.y, Config.Markers.StorePoint.Size.z, Config.Markers.StorePoint.Color.r, Config.Markers.StorePoint.Color.g, Config.Markers.StorePoint.Color.b, 100, false, true, 2, false, false, false, false)
+                
                 sleep           = 0
             end
         end
@@ -130,19 +131,15 @@ CreateThread(function()
 
             for k, v in pairs(Config.Garages) do
                 if (#(coords - vector3(v.EntryPoint.x, v.EntryPoint.y, v.EntryPoint.z)) < Config.Markers.EntryPoint.Size.x) then
-                    isInMarker = true
-                    currentGarage = k
-                    currentPart = 'EntryPoint'
+                    isInMarker          = true
+                    currentGarage       = k
+                    currentPart         = 'EntryPoint'
 
                     if IsControlJustReleased(0, 38) and not menuIsShowed then
                         ESX.TriggerServerCallback('esx_garage:getVehiclesInParking',
                             function(vehicles)
                                 if next(vehicles) ~= nil then
                                     menuIsShowed        = true
-
-                                    -- vehicles[i].vehicle.bodyHealth
-                                    -- vehicles[i].vehicle.engineHealth
-                                    -- vehicles[i].vehicle.tankHealth
 
                                     for i = 1, #vehicles, 1 do
                                         table.insert(vehiclesList, {
@@ -189,8 +186,7 @@ CreateThread(function()
                     break
                 end
 
-                if (#(coords -
-                    vector3(v.StorePoint.x, v.StorePoint.y, v.StorePoint.z)) < Config.Markers.StorePoint.Size.x) then
+                if (#(coords - vector3(v.StorePoint.x, v.StorePoint.y, v.StorePoint.z)) < Config.Markers.StorePoint.Size.x) then
                     isInMarker          = true
                     currentGarage       = k
                     currentPart         = 'StorePoint'
@@ -198,8 +194,8 @@ CreateThread(function()
 
                     if isInVehicle then
                         if IsControlJustReleased(0, 38) then
-                            local vehicle = GetVehiclePedIsIn(playerPed, false)
-                            local vehicleProps = ESX.Game.GetVehicleProperties(vehicle)
+                            local vehicle           = GetVehiclePedIsIn(playerPed, false)
+                            local vehicleProps      = ESX.Game.GetVehicleProperties(vehicle)
                             
                             ESX.TriggerServerCallback('esx_garage:checkVehicleOwner', function(owner)
                                 if owner then
@@ -215,14 +211,14 @@ CreateThread(function()
             end
 
             if isInMarker and not HasAlreadyEnteredMarker or (isInMarker and (LastGarage ~= currentGarage or LastPart ~= currentPart)) then
+                
                 if LastGarage ~= currentGarage or LastPart ~= currentPart then
-                    TriggerEvent('esx_garage:hasExitedMarker', LastGarage,
-                                 LastPart)
+                    TriggerEvent('esx_garage:hasExitedMarker', LastGarage, LastPart)
                 end
 
                 HasAlreadyEnteredMarker = true
-                LastGarage = currentGarage
-                LastPart = currentPart
+                LastGarage      = currentGarage
+                LastPart        = currentPart
 
                 TriggerEvent('esx_garage:hasEnteredMarker', currentGarage, currentPart)
             end
