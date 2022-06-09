@@ -145,7 +145,6 @@ CreateThread(function()
                                         table.insert(vehiclesList, {
                                             model       = GetDisplayNameFromVehicleModel(vehicles[i].vehicle.model),
                                             plate       = vehicles[i].plate,
-                                            damage      = vehicles[i].damage,
                                             props       = vehicles[i].vehicle
                                         })
 

@@ -10,11 +10,6 @@ $(window).ready(function () {
       $("#vehicle-list").html(getVehicles(data.locales, data.vehiclesList));
 
       // Locales
-      // $(".vehicle-listing").html($(".vehicle-listing").html().replace("Model", data.locales.veh_model));
-      // $(".vehicle-listing").html($(".vehicle-listing").html().replace("Plate", data.locales.veh_plate));
-      // $(".vehicle-listing").html($(".vehicle-listing").html().replace("Vehicle condition", data.locales.veh_condition));
-      // $(".vehicle-listing").html($(".vehicle-listing").html().replace("Action", data.locales.veh_action));
-
       $(".vehicle-listing").html(function (i, text) {
         return text.replace("Model", data.locales.veh_model);
       });
@@ -79,7 +74,6 @@ $(window).ready(function () {
   $(document).on("click", "button.vehicle-action", function (event) {
     let spawnPoint = $("#container").data("spawnpoint");
     let vehicleProps = $(this).data("vehprops");
-    let vehicleDamage = $(this).data("vehdamage");
 
     $.post(
       "https://esx_garage/spawnVehicle",
