@@ -5,6 +5,7 @@ $(window).ready(function () {
     if (data.showMenu) {
       $("#container").fadeIn();
       $("#container").data("spawnpoint", data.spawnPoint);
+      if (data.poundCost) $("#container").data("poundcost", data.poundCost);
       $("#menu").fadeIn();
 
       $("#vehicle-list").html(getVehicles(data.locales, data.vehiclesList));
@@ -72,14 +73,19 @@ $(window).ready(function () {
   }
 
   $(document).on("click", "button.vehicle-action", function (event) {
-    let spawnPoint = $("#container").data("spawnpoint");
-    let vehicleProps = $(this).data("vehprops");
+    let spawnPoint    = $("#container").data("spawnpoint");
+    let poundCost     = $("#container").data("poundcost");
+    let vehicleProps  = $(this).data("vehprops");
+
+    // prevent empty cost
+    if (poundCost === undefined) poundCost = 0;    
 
     $.post(
       "https://esx_garage/spawnVehicle",
       JSON.stringify({
         vehicleProps: vehicleProps,
         spawnPoint: spawnPoint,
+        exitVehicleCost: poundCost
       })
     );
   });
