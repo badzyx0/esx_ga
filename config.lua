@@ -65,11 +65,6 @@ Config.Garages = {
             y           = -886.5, 
             z           = 30.0
         },
-        StorePoint = {
-            x           = -298.8,
-            y           = -901.0, 
-            z           = 30.0
-        },
         SpawnPoint = {
             x           = -309.3, 
             y           = -897.0, 
@@ -83,11 +78,6 @@ Config.Garages = {
             x           = 216.4, 
             y           = -786.6,
             z           = 29.8,
-        },
-        StorePoint = {
-            x           = 231.9,
-            y           = -792.9, 
-            z           = 29.5
         },
         SpawnPoint = {
             x           = 218.9,
