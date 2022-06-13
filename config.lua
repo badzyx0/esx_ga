@@ -25,9 +25,9 @@ Config.Markers = {
             z           = 1.0
         },
         Color = {
-            r           = 0,
-            g           = 153,
-            b           = 51,
+            r           = 54,
+            g           = 51,
+            b           = 255,
         }
     },
     GetOutPoint = {
@@ -38,9 +38,9 @@ Config.Markers = {
             z           = 1.0
         },
         Color = {
-            r           = 54,
+            r           = 153,
             g           = 51,
-            b           = 255,
+            b           = 51,
         }
     },
 }
