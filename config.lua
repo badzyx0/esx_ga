@@ -42,7 +42,20 @@ Config.Markers = {
             g           = 51,
             b           = 51,
         }
-    }
+    },
+    GetOutPoint = {
+        Type            = 1,
+        Size = {
+            x           = 2.0,
+            y           = 2.0,
+            z           = 1.0
+        },
+        Color = {
+            r           = 54,
+            g           = 51,
+            b           = 255,
+        }
+    },
 }
 
 Config.Garages = {
@@ -63,6 +76,7 @@ Config.Garages = {
             z           = 31.0, 
             heading     = 351.8
         },
+        ImpoundedName = 'LosSantos',
     },
     SanAndreasAvenue = {
         EntryPoint = {
@@ -81,6 +95,7 @@ Config.Garages = {
             z           = 30.8,
             heading     = 338.8
         },
+        ImpoundedName = 'LosSantos',
     },
 }
 

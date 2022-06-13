@@ -76,6 +76,26 @@ ESX.RegisterServerCallback('esx_garage:checkVehicleOwner', function(source, cb, 
 end)
 
 -- Pounds part
+ESX.RegisterServerCallback('esx_garage:getVehiclesImpounded', function(source, cb)
+	local xPlayer  = ESX.GetPlayerFromId(source)
+
+	MySQL.query('SELECT * FROM `owned_vehicles` WHERE `owner` = @identifier AND `stored` = 0',
+	{
+		['@identifier'] 	= xPlayer.identifier,
+	}, function(result)
+		local vehicles = {}
+		
+		for i = 1, #result, 1 do
+			table.insert(vehicles, {
+				vehicle 	= json.decode(result[i].vehicle),
+				plate 		= result[i].plate
+			})
+		end
+
+		cb(vehicles)
+	end)
+end)
+
 ESX.RegisterServerCallback('esx_garage:getVehiclesInPound', function(source, cb, pound)
 	local xPlayer  = ESX.GetPlayerFromId(source)
 
@@ -85,6 +105,7 @@ ESX.RegisterServerCallback('esx_garage:getVehiclesInPound', function(source, cb,
 		['@pound']     	    = pound
 	}, function(result)
 		local vehicles = {}
+
 		for i = 1, #result, 1 do
 			table.insert(vehicles, {
 				vehicle 	= json.decode(result[i].vehicle),
