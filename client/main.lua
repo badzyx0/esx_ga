@@ -355,8 +355,6 @@ CreateThread(function()
                                         if menuIsShowed then
                                             ESX.HideUI()
                                         end
-
-                                        -- ESX.ShowNotification(_U('no_veh_parking'))
                                     end
                                 end, currentMarker)
                         end
