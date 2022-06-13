@@ -30,19 +30,6 @@ Config.Markers = {
             b           = 51,
         }
     },
-    StorePoint = {
-        Type            = 1,
-        Size = {
-            x           = 2.0,
-            y           = 2.0,
-            z           = 1.0
-        },
-        Color = {
-            r           = 153,
-            g           = 51,
-            b           = 51,
-        }
-    },
     GetOutPoint = {
         Type            = 1,
         Size = {
